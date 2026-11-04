@@ -47,9 +47,9 @@ export function createTelegramBot(deps: TelegramBotDeps): Bot<Context> {
 
   // 2. Command Handlers
   bot.command("start", async (ctx) => {
-    const modeBadge = env.SHROUD_MODE.toUpperCase();
+    const network = env.ZCASH_NETWORK === "test" ? " · <i>Zcash testnet</i>" : "";
     const text =
-      `🛡️ <b>Welcome to Shroud</b> [${modeBadge}]\n\n` +
+      `🛡️ <b>Welcome to Shroud</b>${network}\n\n` +
       `I am your private spending vault assistant. Tell me what you need (e.g. <i>"get me an India eSIM for a week"</i> or <i>"buy $10 Steam card"</i>) and I'll find options and manage payments from your shielded Zcash vault.\n\n` +
       `Commands:\n` +
       `• /fund — Deposit ZEC to your shielded vault\n` +
@@ -388,15 +388,15 @@ export function createTelegramBot(deps: TelegramBotDeps): Bot<Context> {
 
   bot.command("mode", async (ctx) => {
     await ctx.reply(
-      `⚙️ <b>Shroud Mode</b>: <b>${env.SHROUD_MODE.toUpperCase()}</b>\n` +
-      `• Zcash Network: <b>${env.ZCASH_NETWORK}</b>\n` +
-      `• Bitrefill: <b>${env.BITREFILL_MODE}</b>\n` +
+      `⚙️ <b>Shroud setup</b>\n` +
+      `• Zcash network: <b>${env.ZCASH_NETWORK === "test" ? "testnet (TAZ)" : "mainnet"}</b>\n` +
+      `• Bitrefill: <b>${env.BITREFILL_MODE === "api" ? "live API" : "mock"}</b>\n` +
       `• Fulfilment: ${
         env.SHROUD_MODE === "live"
           ? "1Click swap → Bitrefill invoice (mainnet)"
           : env.BITREFILL_ORDER_MODE === "balance"
-            ? `real Bitrefill products, paid from store credit (max ${centsToUsd(env.BITREFILL_BALANCE_MAX_ORDER_CENTS)}/order, ${centsToUsd(env.BITREFILL_BALANCE_MAX_TOTAL_CENTS)} total)`
-            : "Bitrefill test product (no real money)"
+            ? `real Bitrefill products. Testnet has no ZEC swap, so the Shroud desk is merchant of record: it confirms your shielded payment, then pays Bitrefill from store credit (max ${centsToUsd(env.BITREFILL_BALANCE_MAX_ORDER_CENTS)}/order, ${centsToUsd(env.BITREFILL_BALANCE_MAX_TOTAL_CENTS)} total)`
+            : "Bitrefill test product stands in for the item (simulated, no real money)"
       }\n` +
       `• Vault pays: ${env.DEMO_AMOUNT_SCALE >= 1 ? "full price in TAZ" : `${env.DEMO_AMOUNT_SCALE * 100}% of the price in TAZ (scaled)`}`,
       { parse_mode: "HTML" }

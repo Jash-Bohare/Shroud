@@ -50,12 +50,12 @@ export const Navbar: React.FC<Props> = ({
                 {health && (
                   <span
                     className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full border ${
-                      health.mode === "demo"
+                      health.mode === "demo" && health.fulfilment !== "bitrefill-store-credit"
                         ? "bg-amber-500/10 text-amber-400 border-amber-500/30"
                         : "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
                     }`}
                   >
-                    {health.mode} ({health.network})
+                    {health.network === "test" ? "Zcash testnet" : "Zcash mainnet"}
                   </span>
                 )}
               </div>

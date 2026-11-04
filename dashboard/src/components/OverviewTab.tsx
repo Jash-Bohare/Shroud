@@ -76,11 +76,11 @@ export const OverviewTab: React.FC<Props> = ({ wallet, budget, policy, health })
             <span className="font-semibold">
               {health.fulfilment === "bitrefill-store-credit"
                 ? "Real Bitrefill orders"
-                : "Bitrefill test products"}
+                : "Simulated: Bitrefill test products"}
             </span>{" "}
             {health.fulfilment === "bitrefill-store-credit"
-              ? "— the agent buys the actual product, paid from your Bitrefill store credit after the shielded payment confirms."
-              : "— orders are fulfilled with Bitrefill's free test product (no real money)."}
+              ? "— once your shielded payment confirms, the Shroud desk pays Bitrefill from store credit. Testnet has no ZEC swap, so the desk is merchant of record."
+              : "— Bitrefill's free test product stands in for each item (no real money)."}
           </div>
           {real && real.orderMode === "balance" && (
             <div className="text-xs font-mono whitespace-nowrap">

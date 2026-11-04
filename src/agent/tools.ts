@@ -280,8 +280,7 @@ export class ToolExecutor {
             reasons:
               q.policy?.reasons
                 .filter((r) => q.policy?.decision !== "DENY" || r.outcome === "DENY")
-                .map((r) => r.message) || [],
-            mode: "demo"
+                .map((r) => r.message) || []
           });
         }
 
