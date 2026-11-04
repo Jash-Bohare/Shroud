@@ -36,7 +36,8 @@ Submitted to **both** tracks: **Zcash Privacy** (theme 1, *Private payment rails
 16. [Bitrefill touchpoints](#-bitrefill-touchpoints-built-vs-reused)
 17. [Design decisions](#-design-decisions)
 18. [Technologies used](#-technologies-used)
-19. [Next 30 days](#-next-30-days)
+19. [Early user feedback](#-early-user-feedback)
+20. [Next 30 days](#-next-30-days)
 
 ---
 
@@ -535,13 +536,21 @@ Zcash testnet (NU7, Ironwood pool, unified addresses) · zcash-devtool · ZIP-32
 
 ---
 
+## 💬 Early user feedback
+
+On 4 Nov 2026, two people who didn't build Shroud, **Fenil** and **Naveen**, watched the demo video and talked it through with us on a call. *Paraphrased, not exact quotes:*
+- They found it **easy to use**: you just ask in chat, and approvals are one tap.
+- They said they **would trust it** with an allowance because the spending rules, approvals and kill switch sit in code, outside the AI. It felt **well guarded**.
+
+That's a small sample of two. Collecting written feedback from 10+ testers is week 4 of the plan below.
+
 ## 🗓️ Next 30 days
 
-| Week | Milestone |
-|---|---|
-| 1 | **Mainnet live mode:** one real purchase from shielded ZEC → 1Click → Bitrefill invoice, published with tx evidence |
-| 2 | **Shroud as an MCP server:** any agent (Claude, Cursor, other bots) can request purchases through Shroud's policy engine. This makes it a spend firewall for agents we didn't write. |
-| 3 | **Network privacy:** light-wallet traffic over Nym/Tor, plus dashboard-only code delivery by default |
-| 4 | **10+ outside testers**, published feedback, and a ZCG grant draft |
+| Week | Milestone | Tracking |
+|---|---|---|
+| 1 | **Mainnet live mode:** one real purchase from shielded ZEC → 1Click → Bitrefill invoice, published with tx evidence | [#1](https://github.com/Jash-Bohare/Shroud/issues/1) |
+| 2 | **Shroud as an MCP server:** any agent (Claude, Cursor, other bots) can request purchases through Shroud's policy engine. This makes it a spend firewall for agents we didn't write. | [#2](https://github.com/Jash-Bohare/Shroud/issues/2) |
+| 3 | **Network privacy:** light-wallet traffic over Nym/Tor, dashboard-only code delivery by default, and an encrypted local DB | [#3](https://github.com/Jash-Bohare/Shroud/issues/3) |
+| 4 | **10+ outside testers**, published feedback, and a ZCG grant draft | |
 
-Progress and open work: [github.com/Jash-Bohare/Shroud/issues](https://github.com/Jash-Bohare/Shroud/issues)
+Already started on hack day: the [Bitrefill feedback](FEEDBACK.md) on store-credit sub-accounts (we found the root cause and sent it to the Bitrefill team), and the pricing fix that makes the agent check Bitrefill's real charge instead of the face value.
