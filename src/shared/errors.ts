@@ -1,0 +1,82 @@
+export type ErrorCode =
+  | "VALIDATION_ERROR"
+  | "UNAUTHORIZED"
+  | "NOT_FOUND"
+  | "PRODUCT_NOT_FOUND"
+  | "INVALID_SELECTION"
+  | "OUT_OF_STOCK"
+  | "STATE_CONFLICT"
+  | "POLICY_DENIED"
+  | "PAUSED"
+  | "INSUFFICIENT_FUNDS"
+  | "PAYMENT_CAP_EXCEEDED"
+  | "PRICE_UNAVAILABLE"
+  | "QUOTE_FAILED"
+  | "QUOTE_EXPIRED"
+  | "SWAP_TIMEOUT"
+  | "SWAP_FAILED"
+  | "MERCHANT_ERROR"
+  | "MERCHANT_REJECTED"
+  | "FORBIDDEN_BALANCE_PAYMENT"
+  | "ZCASH_CLI_ERROR"
+  | "LIGHTWALLETD_UNAVAILABLE"
+  | "INVALID_ADDRESS"
+  | "INVALID_MEMO"
+  | "LLM_ERROR"
+  | "CONFIG_ERROR"
+  | "DECRYPTION_FAILED"
+  | "INVALID_STATE"
+  | "APPROVAL_EXPIRED"
+  | "POLICY_VIOLATION"
+  | "INVALID_POLICY"
+  | "INTERNAL";
+
+export const ERROR_HTTP_STATUS: Record<ErrorCode, number> = {
+  VALIDATION_ERROR: 400,
+  UNAUTHORIZED: 401,
+  NOT_FOUND: 404,
+  PRODUCT_NOT_FOUND: 404,
+  INVALID_SELECTION: 400,
+  OUT_OF_STOCK: 409,
+  STATE_CONFLICT: 409,
+  POLICY_DENIED: 403,
+  PAUSED: 403,
+  INSUFFICIENT_FUNDS: 409,
+  PAYMENT_CAP_EXCEEDED: 409,
+  PRICE_UNAVAILABLE: 502,
+  QUOTE_FAILED: 502,
+  QUOTE_EXPIRED: 409,
+  SWAP_TIMEOUT: 504,
+  SWAP_FAILED: 502,
+  MERCHANT_ERROR: 502,
+  MERCHANT_REJECTED: 502,
+  FORBIDDEN_BALANCE_PAYMENT: 500,
+  ZCASH_CLI_ERROR: 502,
+  LIGHTWALLETD_UNAVAILABLE: 503,
+  INVALID_ADDRESS: 400,
+  INVALID_MEMO: 400,
+  LLM_ERROR: 502,
+  CONFIG_ERROR: 500,
+  DECRYPTION_FAILED: 400,
+  INVALID_STATE: 409,
+  APPROVAL_EXPIRED: 409,
+  POLICY_VIOLATION: 403,
+  INVALID_POLICY: 400,
+  INTERNAL: 500
+};
+
+export class ShroudError extends Error {
+  public readonly code: ErrorCode;
+  public readonly status: number;
+  public readonly details?: unknown;
+
+  constructor(code: ErrorCode, message: string, details?: unknown) {
+    super(message);
+    this.name = "ShroudError";
+    this.code = code;
+    this.status = ERROR_HTTP_STATUS[code] ?? 500;
+    this.details = details;
+    Object.setPrototypeOf(this, ShroudError.prototype);
+  }
+}
+
