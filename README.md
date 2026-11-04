@@ -367,6 +367,13 @@ Real Zcash testnet transactions made by Shroud on hack day (4 Nov 2026). Each on
 | **Bitrefill invoice ID** | **`cb55ea12-5580-4cb6-8aa4-e4209dea7df1`** (order `6aeb20b2a6b5e00f07f8f752`), status delivered |
 | Shroud purchase ID | `p_mw22q60x_f252045ee05662ee` |
 
+**More real purchases from the demo video** (each is a shielded testnet payment plus a real Bitrefill order):
+
+| Purchase | Policy | Price | Bitrefill invoice | Zcash testnet tx |
+|---|---|---|---|---|
+| eSIM India 1GB / 7 days | ALLOW: under the $5 auto-approve limit, so the agent paid on its own | $3.89 | `efd23f44-020c-4f2b-b4d4-b7d65f17b51b` | [`c265e043…6f25f`](https://testnet.zcashexplorer.app/transactions/c265e043bba17883b00a0d8445b795b8a9b9d73c879f498c0edadfd86d66f25f) |
+| eSIM India 2GB / 15 days | ASK: over $5, approved by the owner in the dashboard | $6.67 | `0cd94c50-4db7-4d4d-94a2-48d235dcd500` | [`42552f26…085dd`](https://testnet.zcashexplorer.app/transactions/42552f26c146fe7990b490eae0e0790fa4d6c7306929566ec2e04781135085dd) |
+
 The flow was: chat request → policy engine ASK → owner taps Approve → shielded payment from the vault, with the receipt in the same transaction → desk matches the memo `SHROUD-DESK <purchase id>` and waits for a confirmation → real Bitrefill order paid from store credit → eSIM delivered to Telegram.
 
 ### Earlier testnet payments
