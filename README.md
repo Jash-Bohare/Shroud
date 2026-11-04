@@ -553,4 +553,4 @@ That's a small sample of two. Collecting written feedback from 10+ testers is we
 | 3 | **Network privacy:** light-wallet traffic over Nym/Tor, dashboard-only code delivery by default, and an encrypted local DB | [#3](https://github.com/Jash-Bohare/Shroud/issues/3) |
 | 4 | **10+ outside testers**, published feedback, and a ZCG grant draft | |
 
-Already started on hack day: the [Bitrefill feedback](FEEDBACK.md) on store-credit sub-accounts (we found the root cause and sent it to the Bitrefill team), and the pricing fix that makes the agent check Bitrefill's real charge instead of the face value.
+Already started on hack day: the [Bitrefill feedback](FEEDBACK.md) on store-credit sub-accounts (root cause found with Bitrefill's MCP `get-balances` tool), and the pricing fix that makes the agent check Bitrefill's real charge instead of the face value.
