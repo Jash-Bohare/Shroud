@@ -1,0 +1,21 @@
+Account 16eea9fd-2187-447a-b309-911cbd4b0785 (birthday height 4562416)
+     Name: vault
+     UIVK: uivktest1<redacted-incoming-viewing-key>
+     UFVK: uviewtest1<redacted-viewing-key>
+     Source: derived
+       Seed fingerprint: 02143ce7f70265aa91b024872da60089d6e9fbd23dfc0a9694527a31b229f823
+       Account index: 0
+Account 1f4c09f8-1676-4a0d-8e50-bdfdbb76894a (birthday height 4562416)
+     Name: desk
+     UIVK: uivktest1<redacted-incoming-viewing-key>
+     UFVK: uviewtest1<redacted-viewing-key>
+     Source: derived
+       Seed fingerprint: 02143ce7f70265aa91b024872da60089d6e9fbd23dfc0a9694527a31b229f823
+       Account index: 2
+Account b29fdc8a-92ce-4ea8-91e1-78a584694d36 (birthday height 4562416)
+     Name: receipts
+     UIVK: uivktest1<redacted-incoming-viewing-key>
+     UFVK: uviewtest1<redacted-viewing-key>
+     Source: derived
+       Seed fingerprint: 02143ce7f70265aa91b024872da60089d6e9fbd23dfc0a9694527a31b229f823
+       Account index: 1

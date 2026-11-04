@@ -1,0 +1,157 @@
+Transactions:
+014788f10adf49defdacd79a99e10977d6a5167ee8fde708e95bea1d85fbff9d
+     Mined: 4562638 (2026-10-31 8:27:43.0 +00:00:00)
+    Amount:   1.00000000 TAZ
+  Fee paid: Unknown
+  Sent 0 notes, received 1 notes, 0 memos
+  Output 0 (Ironwood)
+    Value:   1.00000000 TAZ
+    Received by account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1xhnxtzmrum59ygs88ggyuhyv9f40f4qqwhpx6e3gn7n8hddm3m0vatlug2ya2m4rd6wlxj8vvje0tpu0l6wh6dxn96q8lhe6n340mznpx353e8gfnc5l03mj0xg7n0f47kg3sjlphyx6d2xgu9fzcdn209nqcs0q6xmu2s4cv4wkmpn6js0fj882807eya78wwacujhn5l052930dh2
+6663bc4eb195d7a1adda095184da620f188a7de7c395f4d82cf7a386fbf2e075
+     Mined: 4562652 (2026-10-31 8:32:54.0 +00:00:00)
+    Amount:   0.00040000 TAZ
+  Fee paid:   0.00030000 TAZ
+  Sent 2 notes, received 0 notes, 0 memos
+  Output 0 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 1 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 2 (Ironwood)
+    Value:   0.00010000 TAZ (Wallet Internal Transfer)
+    Received by account: 1f4c09f8-1676-4a0d-8e50-bdfdbb76894a (desk)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1cpef64umnjj9e4va0lvxu8lxrfunemxtcn94dtzu4cmvf4r3t0mngs7ss5t0yfdu8nhjjzhlfwh662zhlwzex5chzqm2x67nvf95madqdag0c9ch5g03n7wsatwdz8atkqmfwul0mcgsklk0hhh4zsvlffz0h7l4mt5d80uudykaztkqa7fdjv72kr34tc733zvnyhh8hn85wvt69kj
+    Memo: Memo::Text("SHROUD-DESK smoke-test")
+  Output 3 (Ironwood)
+    Value:   0.00000000 TAZ (Wallet Internal Transfer)
+    Received by account: b29fdc8a-92ce-4ea8-91e1-78a584694d36 (receipts)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1y7nxpskk2jg3pf97wum7d7yk7rwnw5yakl3sy0ctvekgm6t94suzwfdqfzfa784ktsqglarat6p620476r6m8xprrt8j49y5rxuk3p023lzgev726l8e5xw3p5mdu0075fkvtk5tq7zkaxgnsfjgnkz8zyukfajtqum24t5zxma7jpcnph6hhaeceakhjtxrsuuysy7sm32hs3w56sp
+    Memo: Memo::Text("SHRD1{"v":1,"id":"p_smoke_1793435555094","a":"att_smoke_1793435555094","t":1793435559,"m":"demo","p":"test-card","n":"Smoke Test Card","fv":"1","fc":"USD","u":100,"z":"10000","x":"desk"}")
+  Output 4 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 5 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+6663bc4eb195d7a1adda095184da620f188a7de7c395f4d82cf7a386fbf2e075
+     Mined: 4562652 (2026-10-31 8:32:54.0 +00:00:00)
+    Amount:   0.00000000 TAZ
+  Fee paid:   0.00030000 TAZ
+  Sent 0 notes, received 1 notes, 0 memos
+  Output 0 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 1 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 2 (Ironwood)
+    Value:   0.00010000 TAZ (Wallet Internal Transfer)
+    Received by account: 1f4c09f8-1676-4a0d-8e50-bdfdbb76894a (desk)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1cpef64umnjj9e4va0lvxu8lxrfunemxtcn94dtzu4cmvf4r3t0mngs7ss5t0yfdu8nhjjzhlfwh662zhlwzex5chzqm2x67nvf95madqdag0c9ch5g03n7wsatwdz8atkqmfwul0mcgsklk0hhh4zsvlffz0h7l4mt5d80uudykaztkqa7fdjv72kr34tc733zvnyhh8hn85wvt69kj
+    Memo: Memo::Text("SHROUD-DESK smoke-test")
+  Output 3 (Ironwood)
+    Value:   0.00000000 TAZ (Wallet Internal Transfer)
+    Received by account: b29fdc8a-92ce-4ea8-91e1-78a584694d36 (receipts)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1y7nxpskk2jg3pf97wum7d7yk7rwnw5yakl3sy0ctvekgm6t94suzwfdqfzfa784ktsqglarat6p620476r6m8xprrt8j49y5rxuk3p023lzgev726l8e5xw3p5mdu0075fkvtk5tq7zkaxgnsfjgnkz8zyukfajtqum24t5zxma7jpcnph6hhaeceakhjtxrsuuysy7sm32hs3w56sp
+    Memo: Memo::Text("SHRD1{"v":1,"id":"p_smoke_1793435555094","a":"att_smoke_1793435555094","t":1793435559,"m":"demo","p":"test-card","n":"Smoke Test Card","fv":"1","fc":"USD","u":100,"z":"10000","x":"desk"}")
+  Output 4 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 5 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+6663bc4eb195d7a1adda095184da620f188a7de7c395f4d82cf7a386fbf2e075
+     Mined: 4562652 (2026-10-31 8:32:54.0 +00:00:00)
+    Amount:   0.00010000 TAZ
+  Fee paid:   0.00030000 TAZ
+  Sent 0 notes, received 1 notes, 0 memos
+  Output 0 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 1 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 2 (Ironwood)
+    Value:   0.00010000 TAZ (Wallet Internal Transfer)
+    Received by account: 1f4c09f8-1676-4a0d-8e50-bdfdbb76894a (desk)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1cpef64umnjj9e4va0lvxu8lxrfunemxtcn94dtzu4cmvf4r3t0mngs7ss5t0yfdu8nhjjzhlfwh662zhlwzex5chzqm2x67nvf95madqdag0c9ch5g03n7wsatwdz8atkqmfwul0mcgsklk0hhh4zsvlffz0h7l4mt5d80uudykaztkqa7fdjv72kr34tc733zvnyhh8hn85wvt69kj
+    Memo: Memo::Text("SHROUD-DESK smoke-test")
+  Output 3 (Ironwood)
+    Value:   0.00000000 TAZ (Wallet Internal Transfer)
+    Received by account: b29fdc8a-92ce-4ea8-91e1-78a584694d36 (receipts)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1y7nxpskk2jg3pf97wum7d7yk7rwnw5yakl3sy0ctvekgm6t94suzwfdqfzfa784ktsqglarat6p620476r6m8xprrt8j49y5rxuk3p023lzgev726l8e5xw3p5mdu0075fkvtk5tq7zkaxgnsfjgnkz8zyukfajtqum24t5zxma7jpcnph6hhaeceakhjtxrsuuysy7sm32hs3w56sp
+    Memo: Memo::Text("SHRD1{"v":1,"id":"p_smoke_1793435555094","a":"att_smoke_1793435555094","t":1793435559,"m":"demo","p":"test-card","n":"Smoke Test Card","fv":"1","fc":"USD","u":100,"z":"10000","x":"desk"}")
+  Output 4 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 5 (Ironwood)
+    Value:   0.24990000 TAZ (Change)
+    Memo: Memo::Empty
+ee52b304823c28effd525f5fe273c4bdf110da102f43d18a2c4a30e1e195421b
+     Mined: 4562665 (2026-10-31 8:37:49.0 +00:00:00)
+    Amount:   0.00025000 TAZ
+  Fee paid:   0.00015000 TAZ
+  Sent 2 notes, received 0 notes, 0 memos
+  Output 0 (Ironwood)
+    Value:   0.00000000 TAZ (Wallet Internal Transfer)
+    Received by account: b29fdc8a-92ce-4ea8-91e1-78a584694d36 (receipts)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1y7nxpskk2jg3pf97wum7d7yk7rwnw5yakl3sy0ctvekgm6t94suzwfdqfzfa784ktsqglarat6p620476r6m8xprrt8j49y5rxuk3p023lzgev726l8e5xw3p5mdu0075fkvtk5tq7zkaxgnsfjgnkz8zyukfajtqum24t5zxma7jpcnph6hhaeceakhjtxrsuuysy7sm32hs3w56sp
+    Memo: Memo::Text("SHRD1{"v":1,"id":"p_smoke_1793435843144","a":"att_smoke_1793435843144","t":1793435847,"m":"demo","p":"test-card","n":"Smoke Test Card","fv":"1","fc":"USD","u":100,"z":"10000","x":"desk"}")
+  Output 1 (Ironwood)
+    Value:   0.24965000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 2 (Ironwood)
+    Value:   0.00010000 TAZ (Wallet Internal Transfer)
+    Received by account: 1f4c09f8-1676-4a0d-8e50-bdfdbb76894a (desk)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1cpef64umnjj9e4va0lvxu8lxrfunemxtcn94dtzu4cmvf4r3t0mngs7ss5t0yfdu8nhjjzhlfwh662zhlwzex5chzqm2x67nvf95madqdag0c9ch5g03n7wsatwdz8atkqmfwul0mcgsklk0hhh4zsvlffz0h7l4mt5d80uudykaztkqa7fdjv72kr34tc733zvnyhh8hn85wvt69kj
+    Memo: Memo::Text("SHROUD-DESK smoke-test")
+ee52b304823c28effd525f5fe273c4bdf110da102f43d18a2c4a30e1e195421b
+     Mined: 4562665 (2026-10-31 8:37:49.0 +00:00:00)
+    Amount:   0.00000000 TAZ
+  Fee paid:   0.00015000 TAZ
+  Sent 0 notes, received 1 notes, 0 memos
+  Output 0 (Ironwood)
+    Value:   0.00000000 TAZ (Wallet Internal Transfer)
+    Received by account: b29fdc8a-92ce-4ea8-91e1-78a584694d36 (receipts)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1y7nxpskk2jg3pf97wum7d7yk7rwnw5yakl3sy0ctvekgm6t94suzwfdqfzfa784ktsqglarat6p620476r6m8xprrt8j49y5rxuk3p023lzgev726l8e5xw3p5mdu0075fkvtk5tq7zkaxgnsfjgnkz8zyukfajtqum24t5zxma7jpcnph6hhaeceakhjtxrsuuysy7sm32hs3w56sp
+    Memo: Memo::Text("SHRD1{"v":1,"id":"p_smoke_1793435843144","a":"att_smoke_1793435843144","t":1793435847,"m":"demo","p":"test-card","n":"Smoke Test Card","fv":"1","fc":"USD","u":100,"z":"10000","x":"desk"}")
+  Output 1 (Ironwood)
+    Value:   0.24965000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 2 (Ironwood)
+    Value:   0.00010000 TAZ (Wallet Internal Transfer)
+    Received by account: 1f4c09f8-1676-4a0d-8e50-bdfdbb76894a (desk)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1cpef64umnjj9e4va0lvxu8lxrfunemxtcn94dtzu4cmvf4r3t0mngs7ss5t0yfdu8nhjjzhlfwh662zhlwzex5chzqm2x67nvf95madqdag0c9ch5g03n7wsatwdz8atkqmfwul0mcgsklk0hhh4zsvlffz0h7l4mt5d80uudykaztkqa7fdjv72kr34tc733zvnyhh8hn85wvt69kj
+    Memo: Memo::Text("SHROUD-DESK smoke-test")
+ee52b304823c28effd525f5fe273c4bdf110da102f43d18a2c4a30e1e195421b
+     Mined: 4562665 (2026-10-31 8:37:49.0 +00:00:00)
+    Amount:   0.00010000 TAZ
+  Fee paid:   0.00015000 TAZ
+  Sent 0 notes, received 1 notes, 0 memos
+  Output 0 (Ironwood)
+    Value:   0.00000000 TAZ (Wallet Internal Transfer)
+    Received by account: b29fdc8a-92ce-4ea8-91e1-78a584694d36 (receipts)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1y7nxpskk2jg3pf97wum7d7yk7rwnw5yakl3sy0ctvekgm6t94suzwfdqfzfa784ktsqglarat6p620476r6m8xprrt8j49y5rxuk3p023lzgev726l8e5xw3p5mdu0075fkvtk5tq7zkaxgnsfjgnkz8zyukfajtqum24t5zxma7jpcnph6hhaeceakhjtxrsuuysy7sm32hs3w56sp
+    Memo: Memo::Text("SHRD1{"v":1,"id":"p_smoke_1793435843144","a":"att_smoke_1793435843144","t":1793435847,"m":"demo","p":"test-card","n":"Smoke Test Card","fv":"1","fc":"USD","u":100,"z":"10000","x":"desk"}")
+  Output 1 (Ironwood)
+    Value:   0.24965000 TAZ (Change)
+    Memo: Memo::Empty
+  Output 2 (Ironwood)
+    Value:   0.00010000 TAZ (Wallet Internal Transfer)
+    Received by account: 1f4c09f8-1676-4a0d-8e50-bdfdbb76894a (desk)
+    Sent from account: 16eea9fd-2187-447a-b309-911cbd4b0785 (vault)
+    To: utest1cpef64umnjj9e4va0lvxu8lxrfunemxtcn94dtzu4cmvf4r3t0mngs7ss5t0yfdu8nhjjzhlfwh662zhlwzex5chzqm2x67nvf95madqdag0c9ch5g03n7wsatwdz8atkqmfwul0mcgsklk0hhh4zsvlffz0h7l4mt5d80uudykaztkqa7fdjv72kr34tc733zvnyhh8hn85wvt69kj
+    Memo: Memo::Text("SHROUD-DESK smoke-test")
