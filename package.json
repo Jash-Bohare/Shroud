@@ -1,0 +1,55 @@
+{
+  "name": "shroud",
+  "version": "0.1.0",
+  "description": "A private spending vault for AI agents",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc -p tsconfig.json && node -e \"require('fs').cpSync('src/db/migrations','dist/db/migrations',{recursive:true})\"",
+    "build:dashboard": "npm --prefix dashboard run build",
+    "build:all": "npm run build && npm run build:dashboard",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke:zcash": "tsx scripts/smoke-zcash.ts",
+    "smoke:llm": "tsx scripts/smoke-llm.ts",
+    "smoke:bitrefill": "tsx scripts/smoke-bitrefill.ts",
+    "smoke:oneclick": "tsx scripts/smoke-oneclick.ts",
+    "smoke:purchase": "tsx scripts/smoke-purchase.ts",
+    "demo:reset": "tsx scripts/demo-reset.ts",
+    "dry:agent": "tsx scripts/dry-run-agent.ts",
+    "split:notes": "tsx scripts/split-notes.ts",
+    "dashboard": "npm --prefix dashboard run dev",
+    "dashboard:link": "tsx scripts/dashboard-link.ts"
+  },
+  "dependencies": {
+    "@defuse-protocol/one-click-sdk-typescript": "^0.1.26",
+    "better-sqlite3": "^11.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "grammy": "^1.30.0",
+    "openai": "^4.68.4",
+    "pino": "^9.5.0",
+    "pino-pretty": "^11.3.0",
+    "qrcode": "^1.5.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.17.2",
+    "@types/qrcode": "^1.5.5",
+    "eslint": "^9.13.0",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.11.0",
+    "vitest": "^2.1.3"
+  }
+}
+

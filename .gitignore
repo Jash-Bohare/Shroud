@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+data/
+*.db
+*.db-*
+identity*.txt
+*.age
+shroud-data/
+dashboard/dist/
+dashboard/node_modules/
+
+# Internal planning (kept local, not published)
+docs/
+CLAUDE.md
+AGENTS.md
