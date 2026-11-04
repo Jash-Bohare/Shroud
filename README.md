@@ -13,6 +13,8 @@ Submitted to **both** tracks: **Zcash Privacy** (theme 1, *Private payment rails
 
 > **One-line pitch:** Shroud lets you give an AI agent on Telegram a shielded-ZEC allowance so it can buy real Bitrefill gift cards, eSIMs and top-ups for you. Spending rules are enforced in code, not by the AI, and every payment carries an encrypted receipt that only your viewing key can read. It's for people who want an agent that shops for them without handing it a credit card or a public wallet.
 
+### 🎬 [Watch the demo video (2 min)](https://youtu.be/VfNTNUrJXYo)
+
 **Judges, jump to:** [Privacy & trust note](#-privacy--trust-note) · [Guardrails](#-guardrails-the-most-an-agent-can-spend) · [Bitrefill touchpoints](#-bitrefill-touchpoints-built-vs-reused) · [On-chain proof](#-on-chain-proof) · [5-minute try-out](#-5-minute-try-out-no-wallet-needed) · [Early user feedback](#-early-user-feedback) · [Next 30 days](#-next-30-days) · [FEEDBACK.md](FEEDBACK.md)
 
 ---
@@ -436,6 +438,7 @@ Being honest about where this is:
 | **Tracks** | Both: Zcash Privacy + Bitrefill Agentic Commerce |
 | **Testnet transaction ID** | [`4e887645cdc062dd56271974f02083f31f997511634354e3c4aedef6337a2262`](https://testnet.zcashexplorer.app/transactions/4e887645cdc062dd56271974f02083f31f997511634354e3c4aedef6337a2262): payment + encrypted receipt in one shielded transaction |
 | **Bitrefill invoice ID** | `cb55ea12-5580-4cb6-8aa4-e4209dea7df1`: a real India eSIM bought by the agent, paid from shielded TAZ via the desk |
+| **Demo video** | https://youtu.be/VfNTNUrJXYo |
 | **Public URL** | Not applicable: Shroud is a self-hosted agent and Telegram bot. Zcash working is shown in the video and through the explorer links above. |
 | **Feedback** | [FEEDBACK.md](FEEDBACK.md) |
 
