@@ -3,7 +3,7 @@
 From the Shroud team, Free Society Hack, Mumbai, 4 Nov 2026. Shroud is an AI agent on Telegram that buys Bitrefill products from a shielded Zcash allowance through the **REST API v2**. Everything below comes from building that, with the exact requests and responses we saw.
 
 ## What worked well
-- **The catalog is excellent for agents.** `GET /v2/products/search` with `country=IN` returned Swiggy, Amazon India, Jio and Airtel refills, and eSIMs. That covers what Indian users actually ask for.
+- **The catalog is excellent for agents.** `GET /v2/products/search` with `country=IN` returned Swiggy, Amazon Fresh India, Jio and Airtel bundles, and India eSIMs. That covers what Indian users actually ask for.
 - **Product detail with packages** is enough for an LLM to pick a denomination without scraping.
 - **Personal API keys** were quick to create from the Developers page, and `/v2/ping` made a good smoke test.
 - **Test products** let us run the whole invoice → order → code loop without spending money.
@@ -42,6 +42,11 @@ From the Shroud team, Free Society Hack, Mumbai, 4 Nov 2026. Shroud is an AI age
 ### 5. Test product naming and a sandbox flag (DX)
 - **What we saw:** the test products are described in different places under different IDs (the MCP docs name `delos-syldavia`; the REST docs mention `test-*` products). It wasn't clear which ones personal API keys can order, or which payment methods they accept.
 - **Suggestion:** one documented sandbox (a `sandbox: true` flag or a sandbox base URL) that settles instantly and returns realistic fake codes.
+
+### 5b. `country=IN` search still returns other countries' products (agents trust filters)
+- **What we saw (4 Nov):** `GET /v2/products/search?q=airtel&country=IN` returned `airtel-nigeria`, `airtel-uganda` and `airtel-kenya` **before** `airtel-bundles-india`. `q=amazon&country=IN` led with `amazon-south-africa`.
+- **Impact:** an LLM tends to pick the first result. A user in India asking for "an Airtel recharge" could get a Nigerian top-up. We added our own country policy rule (R5) partly because of this.
+- **Suggestion:** make `country` a strict filter, or add `strict_country=true`, and return each product's `country_code` in search results so agents can check.
 
 ### 6. Invoice expiry and confirmations in the response (protocol)
 - **Suggestion:** include `expires_at` (ISO-8601) and the required confirmations or underpayment tolerance in the `POST /invoices` response, so polling workers don't have to guess.
