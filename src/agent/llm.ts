@@ -77,9 +77,10 @@ export class OpenAiLlmClient implements LlmClient {
 
     // A fallback model on the same provider has its own rate-limit bucket, so setting only
     // LLM_FALLBACK_MODEL is enough; base URL and key default to the primary's.
-    const fbBaseUrl = cfg?.fallbackBaseUrl ?? (env.LLM_FALLBACK_BASE_URL || baseUrl);
-    const fbApiKey = cfg?.fallbackApiKey ?? (env.LLM_FALLBACK_API_KEY || apiKey);
-    const fbModel = cfg?.fallbackModel ?? env.LLM_FALLBACK_MODEL;
+    // `||`, not `??`: boot passes unset env vars through as "", which must still default.
+    const fbBaseUrl = cfg?.fallbackBaseUrl || env.LLM_FALLBACK_BASE_URL || baseUrl;
+    const fbApiKey = cfg?.fallbackApiKey || env.LLM_FALLBACK_API_KEY || apiKey;
+    const fbModel = cfg?.fallbackModel || env.LLM_FALLBACK_MODEL;
 
     if (fbBaseUrl && fbApiKey && fbModel) {
       this.fallback = new OpenAI({
