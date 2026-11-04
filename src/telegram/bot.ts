@@ -471,7 +471,8 @@ export function createTelegramBot(deps: TelegramBotDeps): Bot<Context> {
         }
       }
 
-      await ctx.reply(res.reply);
+      // Replies are sent as plain text; drop markdown emphasis the model sometimes adds (**x**, __x__, `x`)
+      await ctx.reply(res.reply.replace(/\*\*(.+?)\*\*|__(.+?)__|`([^`]+)`/g, "$1$2$3"));
     } catch (err: any) {
       logger.error({ err: err.message }, "Agent error handling Telegram message");
       await ctx.reply(`Sorry, I encountered an error: ${err.message}`);
