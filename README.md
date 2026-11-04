@@ -376,7 +376,9 @@ Real Zcash testnet transactions made by Shroud on hack day (4 Nov 2026). Each on
 
 The flow was: chat request → policy engine ASK → owner taps Approve → shielded payment from the vault, with the receipt in the same transaction → desk matches the memo `SHROUD-DESK <purchase id>` and waits for a confirmation → real Bitrefill order paid from store credit → eSIM delivered to Telegram.
 
-### Earlier testnet payments
+### Earlier testnet payments (before store credit was enabled)
+
+These are real shielded payments from earlier test runs. **On the Bitrefill side they were fulfilled with Bitrefill's free test product, not real orders**, and they're priced at face value. The real orders are the three above.
 
 | Purchase | Price | Block | Transaction |
 |---|---|---|---|
