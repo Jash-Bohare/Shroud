@@ -43,6 +43,8 @@ export const rawEnvSchema = z.object({
   BITREFILL_ORDER_MODE: z.enum(["test", "balance"]).default("test"),
   BITREFILL_BALANCE_MAX_ORDER_CENTS: z.coerce.number().int().positive().default(1000),
   BITREFILL_BALANCE_MAX_TOTAL_CENTS: z.coerce.number().int().positive().default(2500),
+  // The Bitrefill account's primary balance currency: package `price` is quoted in it.
+  BITREFILL_PRICE_CURRENCY: z.enum(["USD", "EUR", "BTC"]).default("USD"),
 
   // Pricing / 1Click
   PRICE_SOURCE: z.enum(["oneclick", "coingecko", "fixed"]).default("oneclick"),

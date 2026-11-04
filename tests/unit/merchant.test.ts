@@ -52,7 +52,8 @@ describe("MockMerchantAdapter", () => {
 
 
 describe("BitrefillMerchantAdapter pricing (live API shape)", () => {
-  // Shape recorded from GET /v2/products/{id} on 4 Nov 2026: `amount` is in the product currency.
+  // Shape recorded from GET /v2/products/{id} on 4 Nov 2026 while the account's primary
+  // balance was BTC: `price` is in satoshis, `amount` is in the product currency.
   const fixtures: Record<string, any> = {
     "swiggy-money-india": {
       id: "swiggy-money-india",
@@ -77,14 +78,41 @@ describe("BitrefillMerchantAdapter pricing (live API shape)", () => {
     }
   };
 
-  function makeAdapter() {
-    const adapter = new BitrefillMerchantAdapter({ apiKey: "test-key" });
+  function makeAdapter(priceCurrency = "BTC", data: Record<string, any> = fixtures) {
+    const adapter = new BitrefillMerchantAdapter({ apiKey: "test-key", priceCurrency });
     (adapter as any).request = async ({ path }: { path: string }) => {
       const id = decodeURIComponent(path.replace("/products/", ""));
-      return { data: fixtures[id] };
+      return { data: data[id] };
     };
     return adapter;
   }
+
+  // Same products after switching the account's primary balance to USD (4 Nov 2026):
+  // `price` is now the USD amount a balance order is charged.
+  const usdFixtures: Record<string, any> = {
+    "swiggy-money-india": {
+      ...fixtures["swiggy-money-india"],
+      packages: [{ id: "swiggy-money-india<&>2000", value: "2000", price: 21.99, amount: 2000 }]
+    },
+    "bitrefill-esim-india": {
+      ...fixtures["bitrefill-esim-india"],
+      packages: [{ id: "bitrefill-esim-india<&>1GB, 7 Days", value: "1GB, 7 Days", price: 3.89, amount: 2.59 }]
+    }
+  };
+
+  it("uses Bitrefill's real USD charge when the primary balance is USD", async () => {
+    const esim = await makeAdapter("USD", usdFixtures).price({
+      productId: "bitrefill-esim-india",
+      packageId: "bitrefill-esim-india<&>1GB, 7 Days"
+    });
+    expect(esim.priceCents).toBe(389);
+    const swiggy = await makeAdapter("USD", usdFixtures).price({
+      productId: "swiggy-money-india",
+      packageId: "swiggy-money-india<&>2000"
+    });
+    expect(swiggy.priceCents).toBe(2199);
+    expect(swiggy.faceCurrency).toBe("INR");
+  });
 
   it("converts INR package amounts to USD cents (₹500 Swiggy is ~$6, not $500)", async () => {
     const priceInfo = await makeAdapter().price({

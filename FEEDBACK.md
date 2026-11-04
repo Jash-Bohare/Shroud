@@ -10,10 +10,20 @@ From the Shroud team, Free Society Hack, Mumbai, 4 Nov 2026. Shroud is an AI age
 
 ## What broke or slowed us down (most impact first)
 
-### 1. Store credit can't be spent through the API (blocker for us)
-- **What we saw:** the account shows **$25.00 in Store Credits** on bitrefill.com (event credits from the Bitrefill team). Through the API, `GET /v2/accounts/balance` returns `{"balance":0,"currency":"BTC"}`. We re-checked on 4 Nov after the credits arrived, and also tried `?currency=USD`, with the same result. `POST /v2/invoices` with `payment_method: "balance", auto_pay: true` fails with **`Balance too low`**. `store_credit` and `credit` return `unsupported_payment_method`.
-- **Impact:** our whole pipeline ran for real (agent request → owner approval → shielded ZEC payment → desk confirms by memo), and the order was refused at the very last step. An agent can't spend credit that a user or a sponsor gives it, and the hackathon rule "purchases are real, mentors hand out credits" doesn't work through the REST API.
-- **Suggestion:** let `balance` invoices draw on store credit, or add `payment_method: "store_credit"`, and report store credit in `/accounts/balance` with its currency. At minimum, say in the docs which surfaces can spend store credit.
+### 1. Store credit sat in a sub-account the REST API can't reach (cost us ~2 hours)
+- **What we saw:** the account showed **$25.00 in Store Credits** (event credits from the Bitrefill team), but `GET /v2/accounts/balance` returned `{"balance":0,"currency":"BTC"}`. Every `POST /v2/invoices` with `payment_method: "balance", auto_pay: true` failed with **`Balance too low`**. This happened *after* our shielded ZEC payment had already been confirmed, so the whole pipeline ran for real and was refused at the last step. The Bitrefill team at the venue didn't know the cause either.
+- **Root cause, which we found through the MCP:** balances are per-currency sub-accounts. The MCP `get-balances` tool showed `BTC 0.00000000 (primary: true)`, `EUR 0.00`, **`USD 25.00`**. The REST API only ever uses the **primary** sub-account. Adding `balance_currency: "USD"` to `POST /v2/invoices` is silently ignored (the invoice came back with `payment.currency: "BTC"`). Only the MCP's `buy-products` accepts `balance_currency`.
+- **Fix:** we set USD as the primary currency on bitrefill.com. `/accounts/balance` then returned `{"balance":2500,"currency":"USD"}` and balance invoices worked.
+- **Side effect that's easy to miss:** a package's `price` in `GET /v2/products/{id}` is quoted in the **primary balance currency**. With BTC primary, the 1GB India eSIM showed `price: 4986` (satoshis). With USD primary, the same package showed `price: 3.89`. Switching your primary currency silently changes the unit of every price your agent reads.
+- **Suggestions:**
+  1. Support `balance_currency` in REST `POST /v2/invoices`, as the MCP already does.
+  2. Make `GET /v2/accounts/balance` return all sub-accounts (like MCP `get-balances`), or at least mark which one is primary.
+  3. Make `Balance too low` say which sub-account was checked, e.g. `BTC balance 0; USD balance 25.00 available`.
+  4. Return `price_currency` next to each package `price`.
+  5. Credit hackathon store credit in the account's primary currency, or tell builders to switch it.
+
+### 1b. The `/mcp/<API_KEY>` URL from the docs is shut down
+- `https://api.bitrefill.com/mcp/<key>` (still shown in the eCommerce MCP docs) now returns `"This endpoint has been shut down. Connect to /mcp and send your API key in the Authorization header"`. The error message is helpful, but the docs should match.
 
 ### 2. API keys need scopes and spending caps for agents (safety)
 - **What we saw:** a personal API key can do everything, and the eCommerce MCP `buy-products` pays from the balance with no per-key limit.
@@ -21,7 +31,7 @@ From the Shroud team, Free Society Hack, Mumbai, 4 Nov 2026. Shroud is an AI age
 - **Suggestion:** key scopes (`catalog:read`, `invoices:create`, `balance:spend`) and a per-key daily or monthly USD cap on balance spending. This is the safety feature that would let people hand an agent a Bitrefill key.
 
 ### 3. Document the units of a package's `amount` and `price` (correctness)
-- **What we saw:** in `GET /v2/products/{id}`, `amount` turned out to be the face value **in the product's own currency** (`500` for a ₹500 Swiggy card, `2.59` for a USD eSIM). The unit of `price` isn't documented (`70392` for ₹5000 Swiggy, `4986` for a $2.59 eSIM).
+- **What we saw:** in `GET /v2/products/{id}`, `amount` turned out to be the face value **in the product's own currency** (`500` for a ₹500 Swiggy card, `2.59` for a USD eSIM). `price` is the amount actually charged, in the account's primary balance currency (see item 1), but neither fact is documented.
 - **Impact:** we first read `amount` as USD, so a ₹500 card was priced at **$500** and our policy engine refused it. For an agent, a pricing bug is a spending bug.
 - **Suggestion:** document both fields' currency and decimals, and add an explicit `price_usd` (or a price in the requested currency) per package.
 

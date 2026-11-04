@@ -25,13 +25,15 @@ export class BitrefillMerchantAdapter implements MerchantAdapter {
   private readonly apiKey: string;
   private readonly timeoutMs: number;
   private readonly fxUsdPer: Record<string, number>;
+  private readonly priceCurrency: string;
 
-  constructor(opts?: { baseUrl?: string; apiKey?: string; timeoutMs?: number }) {
+  constructor(opts?: { baseUrl?: string; apiKey?: string; timeoutMs?: number; priceCurrency?: string }) {
     const env = getEnv();
     this.baseUrl = opts?.baseUrl ?? "https://api.bitrefill.com/v2";
     this.apiKey = opts?.apiKey ?? env.BITREFILL_API_KEY;
     this.timeoutMs = opts?.timeoutMs ?? 10_000;
     this.fxUsdPer = env.FX_USD_PER ?? { INR: 0.012, EUR: 1.08, USD: 1.0 };
+    this.priceCurrency = (opts?.priceCurrency ?? env.BITREFILL_PRICE_CURRENCY).toUpperCase();
   }
 
   private async request<T>(options: HttpRequestOptions, retries = 2): Promise<T> {
@@ -217,7 +219,9 @@ export class BitrefillMerchantAdapter implements MerchantAdapter {
       ? p.packages.map((pkg: any) => ({
           id: pkg.id,
           value: String(pkg.value),
-          priceCents: this.packageAmountToUsdCents(pkg.amount, currency)
+          priceCents:
+            this.packageChargeToUsdCents(pkg.price) ??
+            this.packageAmountToUsdCents(pkg.amount, currency)
         }))
       : undefined;
 
@@ -305,6 +309,19 @@ export class BitrefillMerchantAdapter implements MerchantAdapter {
       "INVALID_SELECTION",
       `No package or value selected for product "${product.name}"`
     );
+  }
+
+  /**
+   * Bitrefill's package `price` is what a balance order is actually charged, in the
+   * account's *primary balance currency* (satoshis while BTC is primary). Only when
+   * that currency is USD can we use it directly; it includes Bitrefill's margin, so it
+   * is the number the policy engine must check (₹500 Swiggy face ≈ $5.50 charged).
+   */
+  private packageChargeToUsdCents(price: unknown): number | undefined {
+    if (this.priceCurrency !== "USD") return undefined;
+    const n = Number(price);
+    if (price === null || price === undefined || !Number.isFinite(n) || n <= 0) return undefined;
+    return Math.round(n * 100);
   }
 
   /**
