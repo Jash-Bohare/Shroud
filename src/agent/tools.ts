@@ -275,7 +275,12 @@ export class ToolExecutor {
             usd: q.priceUsd,
             zec: q.quotedZec,
             policy: q.policy?.decision || "ALLOW",
-            reasons: q.policy?.reasons.map((r) => r.message) || [],
+            // Only the reasons that produce the decision: on a DENY, an "needs approval" (ASK)
+            // reason is noise and led the model to say the auto-approve limit denied it.
+            reasons:
+              q.policy?.reasons
+                .filter((r) => q.policy?.decision !== "DENY" || r.outcome === "DENY")
+                .map((r) => r.message) || [],
             mode: "demo"
           });
         }
