@@ -7,8 +7,20 @@ import { SYSTEM_PROMPT } from "./prompt.js";
 import { AGENT_TOOLS, ToolExecutor } from "./tools.js";
 
 /** Phrases that assert a purchase happened (or is happening right now). */
-const CLAIMS_PURCHASE =
-  /\b(buying|bought|purchased|ordering|ordered|placed (the|your) order|i'?ll message you when it'?s delivered)\b/i;
+/**
+ * Affirmative claims that a purchase happened or is under way ("Buying X now",
+ * "I've ordered…", "I'll message you when it's delivered"). Negative or blocked replies
+ * ("can't proceed with buying", "spending is paused") must NOT match: an earlier, broader
+ * pattern replaced correct explanations with a generic message.
+ */
+const AFFIRMS_PURCHASE =
+  /(\bi'?ll message you when it'?s delivered\b|\b(buying|ordering)\b(?:[^.!?]|\.(?=\d))*\bnow\b|\bi(?:'ve| have)? (?:just )?(?:bought|purchased|ordered|placed (?:the|your) order)\b|\byour order (?:is|has been) placed\b)/i;
+const NEGATES_PURCHASE =
+  /\b(can'?t|cannot|can not|won'?t|unable|not|no purchase|nothing|haven'?t|hasn'?t|paused|blocked|denied|declined|refused|over your|exceeds?)\b/i;
+
+export function claimsPurchase(reply: string): boolean {
+  return AFFIRMS_PURCHASE.test(reply) && !NEGATES_PURCHASE.test(reply);
+}
 
 export interface AgentLoopOptions {
   llm: LlmClient;
@@ -111,7 +123,7 @@ export class AgentSession {
         let reply = turn.content || "I have processed your request.";
 
         // Honesty guard: the model once said "Buying … now" without calling request_purchase.
-        if (createdPurchaseIds.length === 0 && CLAIMS_PURCHASE.test(reply)) {
+        if (createdPurchaseIds.length === 0 && claimsPurchase(reply)) {
           if (!isLastStep && !correctedClaim) {
             correctedClaim = true;
             messages.push({ role: "assistant", content: reply });

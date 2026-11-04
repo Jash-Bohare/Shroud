@@ -1,7 +1,7 @@
 import Database from "better-sqlite3";
 import { describe, expect, it } from "vitest";
 import { AssistantTurn, ChatMessage, LlmClient, ToolDef } from "../../src/agent/llm.js";
-import { AgentSession } from "../../src/agent/loop.js";
+import { AgentSession, claimsPurchase } from "../../src/agent/loop.js";
 import { MockMerchantAdapter } from "../../src/merchant/mock.js";
 import { PolicyStore } from "../../src/policy/store.js";
 import { FixedPriceSource } from "../../src/pricing/fixed.js";
@@ -422,5 +422,29 @@ describe("Agent Loop step exhaustion after a purchase", () => {
     });
     const llm: LlmClient = { chat: async () => { throw new Error("429 rate limited"); } };
     await expect(new AgentSession({ llm, merchant, purchaseService }).run("hi")).rejects.toThrow("429");
+  });
+});
+
+describe("honesty guard: what counts as a purchase claim", () => {
+  it.each([
+    "Buying Swiggy Money India (₹500) now, I'll message you when it's delivered.",
+    "Buying Bitrefill eSIM India (1GB, 7 Days) ($2.59) now.",
+    "I've ordered your eSIM.",
+    "Done! I bought the ₹500 Swiggy card.",
+    "Your order has been placed."
+  ])("flags affirmative claim: %s", (reply) => {
+    expect(claimsPurchase(reply)).toBe(true);
+  });
+
+  it.each([
+    "Spending is paused, so I can't proceed with buying the eSIM.",
+    "No purchase was made. The quote was denied because it exceeds your $2.60 cap.",
+    "I haven't bought anything yet.",
+    "₹500 is over your $2.60 limit. Would you like ₹100 instead?",
+    "Bitrefill eSIM India ($2.59) needs your approval, tap Approve on the card above.",
+    "I'm not ordering anything until you choose an amount.",
+    "Which amount would you like?"
+  ])("does not flag: %s", (reply) => {
+    expect(claimsPurchase(reply)).toBe(false);
   });
 });
