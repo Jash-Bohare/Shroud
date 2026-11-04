@@ -6,7 +6,7 @@
 [![Bitrefill Track](https://img.shields.io/badge/Track-Bitrefill%20Agentic%20Commerce-0284c7?style=for-the-badge)](https://bitrefill.com)
 [![NEAR Intents](https://img.shields.io/badge/Swaps-NEAR%20Intents%201Click-000000?style=for-the-badge&logo=near)](https://chaindefuser.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tests](https://img.shields.io/badge/tests-155%20passing-10b981?style=for-the-badge)](#3-run-the-tests)
+[![Tests](https://img.shields.io/badge/tests-158%20passing-10b981?style=for-the-badge)](#3-run-the-tests)
 
 Built for the **Free Society Hackathon**, Mumbai (4 November 2026).
 Submitted to the **Zcash Privacy Track** and the **Bitrefill Agentic Commerce Track**.
@@ -275,7 +275,7 @@ CODE_ENCRYPTION_KEY=...          # 64 hex chars (openssl rand -hex 32)
 
 ### 3. Run the tests
 ```bash
-npm test            # 155 tests across 27 files
+npm test            # 158 tests across 27 files
 npm run lint && npm run typecheck
 ```
 They cover all 12 policy rules, the state machine, the worker (including crash recovery and failure paths), the vault, ZIP-321, memo encoding, encryption, the sanitizer, prompt injection, the agent loop, Telegram commands (driven through grammY), the REST API and its auth, and Bitrefill pricing (with the live API's response shape).

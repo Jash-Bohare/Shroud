@@ -407,6 +407,7 @@ export function createTelegramBot(deps: TelegramBotDeps): Bot<Context> {
   bot.callbackQuery(/^ap:(p_[^:]+):([a-f0-9]+)$/, async (ctx) => {
     const purchaseId = ctx.match[1];
     const nonce = ctx.match[2];
+    openApprovalCards.delete(purchaseId);
 
     try {
       const approved = deps.purchaseService.approve(purchaseId, "owner:telegram", nonce);
@@ -419,11 +420,16 @@ export function createTelegramBot(deps: TelegramBotDeps): Bot<Context> {
       await ctx.answerCallbackQuery({ text: "Purchase approved!" });
     } catch (err: any) {
       await ctx.answerCallbackQuery({ text: `Approval failed: ${err.message}`, show_alert: true });
+      // The decision is final either way: show why and remove the buttons
+      await ctx
+        .editMessageText(`⚠️ <b>Approval not possible</b>: ${err.message}\n\nThis tap changed nothing. Send /history to see its current status.`, { parse_mode: "HTML" })
+        .catch(() => {});
     }
   });
 
   bot.callbackQuery(/^rj:(p_[^:]+):([a-f0-9]+)$/, async (ctx) => {
     const purchaseId = ctx.match[1];
+    openApprovalCards.delete(purchaseId);
 
     try {
       const rejected = deps.purchaseService.reject(purchaseId, "owner:telegram");
@@ -436,6 +442,10 @@ export function createTelegramBot(deps: TelegramBotDeps): Bot<Context> {
       await ctx.answerCallbackQuery({ text: "Purchase rejected." });
     } catch (err: any) {
       await ctx.answerCallbackQuery({ text: `Reject failed: ${err.message}`, show_alert: true });
+      // The decision is final either way: show why and remove the buttons
+      await ctx
+        .editMessageText(`⚠️ <b>Reject not possible</b>: ${err.message}\n\nThis tap changed nothing. Send /history to see its current status.`, { parse_mode: "HTML" })
+        .catch(() => {});
     }
   });
 
@@ -482,6 +492,12 @@ export function formatZecPrice(p: PurchaseView): string {
 }
 
 /**
+ * Approval cards still showing buttons, by purchase id. When the decision is made elsewhere
+ * (dashboard, expiry, re-check), the notifier edits the card so its buttons can't mislead.
+ */
+export const openApprovalCards = new Map<string, { chatId: number; messageId: number; header: string }>();
+
+/**
  * Sends an interactive approval card with Approve/Reject inline buttons.
  */
 export async function sendApprovalCard(ctx: Context, p: PurchaseView): Promise<void> {
@@ -497,10 +513,17 @@ export async function sendApprovalCard(ctx: Context, p: PurchaseView): Promise<v
     `Rule: ${p.policyReasons[0] || "Exceeds auto-approve threshold"}\n\n` +
     `Please review and confirm:`;
 
-  await ctx.reply(cardText, {
+  const msg = await ctx.reply(cardText, {
     reply_markup: keyboard,
     parse_mode: "HTML"
   });
+  if (msg?.chat?.id !== undefined && msg.message_id !== undefined) {
+    openApprovalCards.set(p.id, {
+      chatId: msg.chat.id,
+      messageId: msg.message_id,
+      header: `<b>${p.productName}</b> — ${p.priceUsd}`
+    });
+  }
 }
 
 /**
@@ -512,6 +535,25 @@ export function setupTelegramNotifier(
   ownerChatId: number
 ): void {
   eventBus.on("purchase", async (p: PurchaseView) => {
+    const card = openApprovalCards.get(p.id);
+    if (card && p.status !== "AWAITING_APPROVAL") {
+      openApprovalCards.delete(p.id);
+      const outcome =
+        p.status === "APPROVED"
+          ? "✅ <b>Approved in the dashboard</b>. Processing payment from the shielded vault..."
+          : p.status === "REJECTED"
+            ? "❌ <b>Rejected in the dashboard</b>. Nothing was paid."
+            : p.status === "EXPIRED"
+              ? "⌛ <b>Approval expired</b>. Nothing was paid."
+              : p.status === "DENIED"
+                ? `🚫 <b>Blocked on re-check</b>: ${p.policyReasons[0] ?? "a spending rule"}. Nothing was paid.`
+                : `Status: <b>${p.status}</b>`;
+      // Editing without reply_markup removes the Approve/Reject buttons
+      await bot.api
+        .editMessageText(card.chatId, card.messageId, `${outcome}\n\n${card.header}`, { parse_mode: "HTML" })
+        .catch((err) => logger.warn({ err: err.message, purchaseId: p.id }, "Could not update approval card"));
+    }
+
     try {
       const terminalNotices: Partial<Record<PurchaseView["status"], string>> = {
         FAILED: `⚠️ <b>Purchase failed</b>\n\n<b>${p.productName}</b> — ${p.priceUsd}\n${

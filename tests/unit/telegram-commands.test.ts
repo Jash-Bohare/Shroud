@@ -7,8 +7,9 @@ import { PolicyStore } from "../../src/policy/store.js";
 import { FixedPriceSource } from "../../src/pricing/fixed.js";
 import { DemoSwapExecutor } from "../../src/router/demo-swap.js";
 import { PurchaseService } from "../../src/router/purchase-service.js";
-import { createTelegramBot, formatZecPrice } from "../../src/telegram/bot.js";
+import { createTelegramBot, formatZecPrice, openApprovalCards, sendApprovalCard, setupTelegramNotifier } from "../../src/telegram/bot.js";
 import { VaultService } from "../../src/zcash/vault.js";
+import { eventBus } from "../../src/router/events.js";
 
 const OWNER = 123456789;
 
@@ -55,12 +56,17 @@ function setup() {
   });
 
   const sent: string[] = [];
+  const edits: { messageId: number; text: string; hasButtons: boolean }[] = [];
   bot.botInfo = {
     id: 1, is_bot: true, first_name: "Shroud", username: "shroud_test_bot",
     can_join_groups: false, can_read_all_group_messages: false, supports_inline_queries: false,
     can_connect_to_business: false, has_main_web_app: false
   } as any;
   bot.api.config.use(async (_prev, method, payload: any) => {
+    if (method === "editMessageText") {
+      edits.push({ messageId: payload.message_id, text: String(payload.text), hasButtons: !!payload.reply_markup });
+      return { ok: true, result: true } as any;
+    }
     if (payload?.text) sent.push(String(payload.text));
     return { ok: true, result: method === "sendMessage" ? { message_id: 1, date: 0, chat: { id: OWNER, type: "private" } } : true } as any;
   });
@@ -83,7 +89,7 @@ function setup() {
     return sent.join("\n---\n");
   };
 
-  return { send, policyStore, purchaseService };
+  return { send, policyStore, purchaseService, bot, edits };
 }
 
 describe("Telegram commands (driven through grammY handleUpdate)", () => {
@@ -145,5 +151,52 @@ describe("Telegram commands (driven through grammY handleUpdate)", () => {
     expect(text).toMatch(/^0\.5714 ZEC/); // $20 / $35
     expect(text).toContain("Demo: vault pays");
     expect(text).toContain("scaled down");
+  });
+
+  describe("approval cards stay in sync with decisions made elsewhere", () => {
+    // One bot per app in production; in tests each case builds its own, so reset listeners
+    beforeEach(() => {
+      eventBus.removeAllListeners("purchase");
+      openApprovalCards.clear();
+    });
+
+    async function cardFor(t: ReturnType<typeof setup>) {
+      setupTelegramNotifier(t.bot, t.purchaseService, OWNER);
+      const p = await t.purchaseService.request({ productId: "steam-usd", packageId: "steam-20" }, "test", "agent");
+      expect(p.status).toBe("AWAITING_APPROVAL");
+      const ctx: any = { reply: async () => ({ message_id: 77, chat: { id: OWNER } }) };
+      await sendApprovalCard(ctx, p);
+      expect(openApprovalCards.has(p.id)).toBe(true);
+      return p;
+    }
+    const flush = () => new Promise((r) => setTimeout(r, 20));
+
+    it("rejecting in the dashboard edits the Telegram card and removes its buttons", async () => {
+      const t = setup();
+      const p = await cardFor(t);
+      t.purchaseService.reject(p.id, "owner:dashboard");
+      await flush();
+      const e = t.edits.find((x) => x.messageId === 77)!;
+      expect(e.text).toContain("Rejected in the dashboard");
+      expect(e.hasButtons).toBe(false);
+      expect(openApprovalCards.has(p.id)).toBe(false);
+    });
+
+    it("approving in the dashboard edits the card too", async () => {
+      const t = setup();
+      const p = await cardFor(t);
+      t.purchaseService.approve(p.id, "owner:dashboard", p.approvalNonce!);
+      await flush();
+      expect(t.edits.find((x) => x.messageId === 77)?.text).toContain("Approved in the dashboard");
+    });
+
+    it("a pause re-check that blocks the approval is shown on the card", async () => {
+      const t = setup();
+      const p = await cardFor(t);
+      t.policyStore.setPaused(true, "owner:dashboard");
+      expect(() => t.purchaseService.approve(p.id, "owner:dashboard", p.approvalNonce!)).toThrow();
+      await flush();
+      expect(t.edits.find((x) => x.messageId === 77)?.text).toContain("Blocked on re-check");
+    });
   });
 });
