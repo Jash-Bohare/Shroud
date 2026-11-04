@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "q": "esim india",
+    "include_test_products": false,
+    "_endpoint": "/products/search",
+    "limit": 50,
+    "start": 0,
+    "total_results": 1
+  },
+  "data": [
+    {
+      "id": "bitrefill-esim-india",
+      "name": "Bitrefill eSIM India",
+      "base_name": "Bitrefill eSIM India",
+      "country_code": "IN",
+      "country_name": "India",
+      "currency": "USD",
+      "categories": [
+        "esim"
+      ],
+      "redemption_methods": [],
+      "created_time": "2023-07-27T20:35:45.174Z",
+      "recipient_type": "mixed",
+      "image": "esim-local-asia",
+      "termsAndConditions": "<p>Bitrefill eSIM. Bitrefill offers an eSIM product branded “Bitrefill eSIM” that is powered by ESIM Go Limited, a company incorporated under the laws of England and Wales, whose company number is 12465777 and whose registered office is at Office 6, Guardian House, 7 North Bar Street, Banbury, Oxfordshire, England, OX16 0TB (henceforth known as the “<strong>Supplier</strong>” for the purposes of this section).&nbsp;</p><p>Supplier is the provider of the Bitrefill eSIM and of the Mobile Data Services described herein. This section of the Terms governs the terms and conditions of this product.</p><p>In this section of the Terms, a reference to “we”, “our” or “us” means eSIM Go Limited, and not Bitrefill, and a reference to “you” or “your” means the person which purchased a Bitrefill eSIM Plan from our website.</p><p>Definition. This section “Bitrefill eSIM” (and only this section) uses the following defined terms:</p><ul><li><span>Activation (and Activated) means registering your eSIM onto a mobile network for the first time for a Plan, or Plans, purchased for the country in which Activation occurs;</span></li><li><span>Affiliate means Bitrefill;</span></li><li><span>Compatible Mobile Device means a device which can register onto a mobile data network and consuming the Supplier Mobile Data service without a physical subscriber identification module, a list of which is available at the Supplier’s <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://help.esim-go.com/hc/en-gb/sections/4415638580625-eSIM-Compatible-Devices\">website</a></span><span></span><span>(and may be amended by Supplier without notice from time to time)</span></li><li><span>Competent Authority means any person or entity with relevant statutory jurisdiction over you, the Supplier, or the Mobile Data service;</span></li><li><span>Consumer means a natural person entering into this agreement and/or using the Mobile Data services outside their business, trade or profession;</span></li><li><span>eSIM means the profile supplied by Supplier for the purposes of using Mobile Data services on a Compatible Mobile Device (including compatible tablets and laptops);</span></li><li><span>Group Companies means any subsidiary of eSIM Go Limited, its parent(s) and any subsidiaries of those parent(s);</span></li><li><span>Mobile Data means GPRS, 3G, HSDPA, LTE, LTE+ and 5G mobile carrier network access providing access to the internet through the receipt and transmission of electromagnetic energy over paths that are not provided by any material substance constructed or arranged for the purpose of conveying electromagnetic energy; and</span></li><li><span>Plan means the Mobile Data package you purchased from us via our website;</span></li><li><span>Virus means any manipulating program which modifies other programs and/or replicates itself, or any malicious code or agent introduced to a system for the purposes of spying or causing harm.</span></li></ul><p>Plan. You have the right to cancel your Plan, providing you do so within fourteen (14) days of purchase and have not Activated your Plan or Plans.</p><p>All our Plans come with a pre-loaded data allowance that lasts for the term specified when purchased, starting from Activation until the included data allowance is used or the term expires. If your Plan expires before any or all the included data allowance is used, you will lose the remaining balance of any included data allowance.</p><p>Any Plans which are not Activated within twelve (12) months of purchase shall expire without any refund to you. Any eSIM which is not used within twelve (12) months of allocation may be cancelled and you may be required to load a new eSIM to your device(s) prior to Activation of a Plan or Plans.</p><p>You may purchase additional inclusive allowances from the our website (subject to availability) by purchasing new Plans, at the prevailing rate in force at the time. We do not warrant that any particular Plan will be available, nor guarantee any prices in the future.</p><p>We will use reasonable endeavours to let you know by e-mail and an SMS (to your eSIM) when you have used certain percentages of your Plan, and when the Plan is exhausted.&nbsp; Once the Plan is exhausted, you may need to use WiFi or alternative means of accessing our website to purchase an additional Plan if you need one as Mobile Data connectivity from your device shall cease to work until a new Plan is Activated.</p><p>Any inclusive data allowance you have is for use when in the countries specified at the time you purchased your Plan.</p><p>Using our Mobile Data service. You may only use our Mobile Data service for your own personal use during short-term travel away from your normal country of residence. You must only use the Mobile Data service in accordance with our Acceptable Use Policy and may not use it for more than sixty (60) consecutive days in any one country.</p><p>Our Plans are a Mobile Data service only and do not support voice calling or access to the emergency services.</p><p>The Mobile Data service depends on coverage from our in-country network partners which is not guaranteed nor is the Mobile Data service itself guaranteed to be fault-free or free from interruptions. Factors such as (but not limited to) atmospheric conditions, population density, usage of the network by others, terrain, distance from the nearest cellular tower(s), position within a building all affect the quality of the Mobile Data service.</p><p>All your usage of the Mobile Data service will be debited from your inclusive data allowance, regardless of how that allowance was consumed (which, for the avoidance of doubt, includes any usage caused by a Virus). You are strongly advised to keep your device secure (for example, but not limited to, preventing accidental or malicious pairing), your Breeze account credentials secure, and deactivate downloads or streaming services on devices with a Plan except for over WiFi.</p><p>We, or our Affiliate, may take steps to protect the integrity of the Mobile Data service from time to time, by applying traffic management controls the details of which shall be available on our website and amended by us (without notice) from time to time.</p><p>Our Liability to You. We are only liable to you as set out in this section. We have no other duty or liability to you.</p><p>Nothing in this Agreement removes or limits our liability for death or personal injury caused by something we have done or failed to do or for any fraudulent misrepresentation we may have made to you.</p><p>Except as set out in the preceding two paragraphs, our total liability to you for something we or anyone who works for us does or does not do will be limited to £1,000 for one incident or £3,000 for a number of incidents within any twelve (12) month period.</p><p>If you are using the Mobile Data service in connection with your trade or profession, we are not liable to you in any way for any loss or damage that was not reasonably foreseeable at the time you entered this Agreement. This includes but is not limited to loss of income; business; anticipated savings (meaning costs you expected to avoid by using the Mobile Data service) or anticipated profits, loss of property or loss of use of property.</p><p>If you are a Consumer, we are not liable to you in any way for any loss of income; business or profits; or for any loss or damage that was not reasonably foreseeable at the time you entered this Agreement.</p><p>You must tell us about any claim as soon as reasonably possible. We will not be liable to you if we cannot carry out our duties or provide Services because of something beyond our control.</p><p>We will not be responsible for any harm you suffer from a Virus which infiltrates your devices, whether it was transmitted via the Mobile Data services or otherwise. You remain responsible for all Charges applied to Your Account(s) for the use of any Services activated by such a Virus.</p><p>This liability clause will apply even after this agreement has been terminated.</p><p>Suspension of the Mobile Data service. We may suspend the Mobile Data services or terminate this agreement and disconnect any eSIM from our network without warning if:</p><ul><li><span>Our, or our partners’ network breaks down or needs maintenance. We will try to make sure this does not happen often; or</span></li><li><span>You or anyone who uses your Plan does not keep to the conditions of this agreement, or any other agreement with us.</span></li></ul><p>Any period of suspension shall count against the period of any Plan.&nbsp;</p><p>The rights that we have under this paragraph are in addition to the other rights that we have to suspend and/or terminate the Services and/or suspend or terminate this agreement as set out in this “Bitrefill eSIM” section.</p><p>Your Right to Terminate this Agreement. You may terminate this agreement at any time, such notice of termination shall come into effect on the last day of the validity period of any Plans you have purchased. Termination does not give rise to any right for a credit for unused allowances (save where terminated in accordance with point 4 of this agreement).</p><p>Our Right to Terminate this Agreement. We can terminate this Agreement immediately (without any refund owing to you), if any of the following happen:</p><ul><li><span>You break an important condition of this Agreement or a number of less important conditions;</span></li><li><span>We are required to do so by law or a decision of a Competent Authority; or</span></li><li><span>You break a less important condition of this Agreement and do not put it right within seven (7) days of us asking you to; or</span></li><li><span>We can terminate this Agreement immediately, and shall, within a reasonable timeframe, refund to you any Plan or Plans which are not Activated in full, or a reasonable pro-rata amount for any Plan or Plans which are Activated but neither expired nor fully used:</span></li><li><span>We are required to do so by law of a decision of a Competent Authority and that law of Competent Authority requires us to give you a refund; or</span></li><li><span>We are unable to provide the Mobile Data service in the country or countries specified for a given Plan or Plans.</span></li></ul><p>General. You need to get our explicit consent before You can transfer or try to transfer any of your rights and responsibilities under this agreement. We may transfer any of ours without your permission, provided the level of service you currently experience is not materially reduced as a result.</p><p>We can record any conversations between you and our staff (including retaining any live text chats).</p><p>We may send notices to either your postal address, your online account, your email address or we may also send you ‘over the air’ updates to devices which may make some minor adjustments to the functionality or display on those devices. You’ll need to accept these changes which may include doing anything reasonable we request; a failure to do so may mean the Mobile Data service is inoperable.</p><p>You must keep us informed of any changes to your postal address or email address. We are not responsible for messages or notices that don’t get to you because of a change of your postal or e-mail address, a fault with your e-mail address and/or provider, or because your devices are misconfigured or turned off.</p><p>Unless otherwise stated in this Agreement, any notices from you to us must be sent to: 8 North Bar Street, Banbury, Oxfordshire, United Kingdom, OX16 0TB.</p><p>Any concession or extra time that we allow you only applies to the specific circumstances in which we give it. It does not affect our rights under this agreement in any other way.</p><p>This Agreement shall not confer any benefit on a third party under the Contracts (Rights of Third Parties) Act 1999. English law will apply to the Agreement between You and the Supplier under this “Bitrefill eSIM” section and any related disputes will be settled in the Courts of England and Wales, Scotland or Northern Ireland (as applicable). You may be able to take Your disputes to adjudication under the Communications and Internet Services Adjudications Scheme, the details of which are set out in Our Complaints Code of Practice. We will give you a copy if you ask for it.</p><p>If a point or condition of this Agreement is not legally effective, the remainder of this agreement shall be effective. We can replace any point or condition that is not legally effective with a point or condition of similar meaning that is.</p><p>This agreement is the whole agreement between you and us. Any other information that you may have seen or heard before you entered into this agreement isn’t included.</p><p>Your Information. You confirm that the information that you provide to us, including your registration details, is true, accurate and complete. You agree to inform us immediately of any changes to your details by contacting our customer services as set out below.</p><p>We will use your personal information in accordance with the terms of this agreement and our privacy policy which you can find on our website.</p><p>Where you were referred to us by an Affiliate, we may share your e-mail address and purchase history with the Affiliate from time to time, in addition with any other information which you consented for the Affiliate to receive when entering into an agreement with the Affiliate.</p><p>We and/or Our Group Companies will use your personal information for providing the Mobile Data service, administration of your Account and billing, advertising, marketing, research, analytics, credit scoring, customer services, tracking the devices you are using on our network and web use and profiling your preferences. We will disclose your information to our service providers and agents to help us with these purposes. We will keep your information for a reasonable period after your contract with us has finished in case you decide to use our services again and may contact you about your services during this time.</p><p>You agree that we, our Group Companies and our carefully selected business partners can use information about you, including information about your use of our network, Mobile Data service and related products and the location of the devices you are using on our network, to tell you about products, services or promotions offered by us and third parties that may be of interest to you and for research and analytics purposes. We may contact you by post, fax, email, telephone, electronic messaging (including but not limited to SMS and MMS) or online or via any other interactive media. If you would prefer not to receive direct marketing communications from us, simply let us know by clicking the unsubscribe link in the email and we will stop sending them to you. Please see our privacy policy on our website for further details. If you will be permitting someone else to us the Mobile Data services then you agree that you have told that person how we will use their information and obtained their consent to this.</p><p>You have a right to ask for a copy of your personal information (for a small charge) and to correct any inaccuracies. Please see our privacy policy for further details.</p><p>In the event of a personal data security breach that affects you, we will notify the relevant authorities, and if appropriate, we will notify the subscriber or user of our Mobile Data service who is affected by the breach in writing. A personal data security breach that affects you (or the subscriber/user) does not give you the right to terminate this Agreement.</p><p>We may transfer your personal information to countries outside of the European Economic Area, which do not always provide the same level of data protection as the UK, for the purposes of providing you with our Services. If we do make such a transfer, we will put a contract in place with our service providers including security obligations on them to ensure your information is protected in accordance with UK standards.</p><p>We will carry out any activity or disclosure of your personal information to comply with our legal and regulatory requirements, for law enforcement purposes and to detect, prevent or investigate crime, fraud and misuse of or damage to our network or Mobile Data services.</p>",
+      "in_stock": true,
+      "packages": [
+        {
+          "id": "bitrefill-esim-india<&>1GB, 7 Days",
+          "value": "1GB, 7 Days",
+          "price": 4983,
+          "amount": 2.59
+        },
+        {
+          "id": "bitrefill-esim-india<&>2GB, 15 Days",
+          "value": "2GB, 15 Days",
+          "price": 8541,
+          "amount": 4.44
+        },
+        {
+          "id": "bitrefill-esim-india<&>3GB, 30 Days",
+          "value": "3GB, 30 Days",
+          "price": 11676,
+          "amount": 6.07
+        },
+        {
+          "id": "bitrefill-esim-india<&>5GB, 30 Days",
+          "value": "5GB, 30 Days",
+          "price": 17697,
+          "amount": 9.2
+        },
+        {
+          "id": "bitrefill-esim-india<&>10GB, 30 Days",
+          "value": "10GB, 30 Days",
+          "price": 27738,
+          "amount": 14.42
+        },
+        {
+          "id": "bitrefill-esim-india<&>20GB, 30 Days",
+          "value": "20GB, 30 Days",
+          "price": 45589,
+          "amount": 23.7
+        },
+        {
+          "id": "bitrefill-esim-india<&>50GB, 30 Days",
+          "value": "50GB, 30 Days",
+          "price": 101372,
+          "amount": 52.7
+        },
+        {
+          "id": "bitrefill-esim-india<&>100GB, 30 Days",
+          "value": "100GB, 30 Days",
+          "price": 179468,
+          "amount": 93.3
+        },
+        {
+          "id": "bitrefill-esim-india<&>Unlimited, 1 Day",
+          "value": "Unlimited, 1 Day",
+          "price": 12484,
+          "amount": 6.49
+        },
+        {
+          "id": "bitrefill-esim-india<&>Unlimited, 3 Days",
+          "value": "Unlimited, 3 Days",
+          "price": 33028,
+          "amount": 17.17
+        },
+        {
+          "id": "bitrefill-esim-india<&>Unlimited, 5 Days",
+          "value": "Unlimited, 5 Days",
+          "price": 53571,
+          "amount": 27.85
+        },
+        {
+          "id": "bitrefill-esim-india<&>Unlimited, 7 Days",
+          "value": "Unlimited, 7 Days",
+          "price": 74096,
+          "amount": 38.52
+        },
+        {
+          "id": "bitrefill-esim-india<&>Unlimited, 10 Days",
+          "value": "Unlimited, 10 Days",
+          "price": 104911,
+          "amount": 54.54
+        },
+        {
+          "id": "bitrefill-esim-india<&>Unlimited, 15 Days",
+          "value": "Unlimited, 15 Days",
+          "price": 156270,
+          "amount": 81.24
+        },
+        {
+          "id": "bitrefill-esim-india<&>Unlimited, 30 Days",
+          "value": "Unlimited, 30 Days",
+          "price": 310328,
+          "amount": 161.33
+        }
+      ]
+    }
+  ]
+}
